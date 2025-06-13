@@ -1,0 +1,40 @@
+.footer {
+  width: 100%;
+  padding: 2rem 0;
+  background-color: rgb(var(--color-second-rgb), 0.24);
+
+  backdrop-filter: blur(20px); /* размытие заднего фона */
+  -webkit-backdrop-filter: blur(20px); /* поддержка Safari */
+  border-top: 1px solid rgba(255, 255, 255, 0.1); /* тонкая граница */
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Верхняя часть (лого и текст) */
+.footer-top {
+  display: flex;
+  margin-bottom: 174px;
+}
+
+.footer-logo img {
+  max-width: 160px;
+
+  margin-bottom: 1rem;
+}
+
+.footer-logo p {
+  color: #adb2b1;
+  font-weight: 400;
+}
+
+/* Нижняя часть футера */
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  color: #adb2b1;
+  font-weight: 400;
+  font-size: 12px;
+}
+
+.footer-cookies a {
+  color: #adb2b1;
+}

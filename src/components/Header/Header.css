@@ -1,0 +1,271 @@
+.header {
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: rgba(var(--bg-color-rgb), 0.8);
+  backdrop-filter: blur(10px);
+  padding: 1rem 0;
+}
+
+.styled-input {
+  width: 100%;
+  max-width: 300px;
+  padding: 10px 14px;
+  font-size: 16px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  margin-bottom: 1rem;
+}
+
+.styled-input::placeholder {
+  color: #999;
+  font-style: italic;
+}
+
+.styled-input:focus {
+  border: 2px solid var(--color-main);
+}
+
+
+.header-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  z-index: 1001;
+}
+
+.logo img {
+  height: auto;
+  max-width: 120px;
+}
+
+/* Burger menu styles */
+.burger-menu {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 24px;
+  height: 18px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 1001;
+}
+
+.burger-menu span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: #fff;
+  transition: all 0.3s ease;
+}
+
+.burger-menu.open span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.burger-menu.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.burger-menu.open span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* Navigation styles */
+.nav {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.nav a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.nav a:hover {
+  color: var(--color-main);
+}
+
+.nav.open {
+  transform: translateX(0);
+}
+
+/* Contact button styles */
+.contact-btn {
+  padding: 0.5rem 1.5rem;
+  border: 2px solid var(--color-main);
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--color-main);
+  background: inherit;
+  transition: all 0.3s ease;
+}
+
+.contact-btn:hover {
+  background: var(--color-main);
+  color: #fff;
+}
+
+/* Modal styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.modal {
+  background: var(--bg-color);
+  border-radius: 8px;
+  padding: 2rem;
+  width: 90%;
+  max-width: 500px;
+  max-height: 80vh;
+  overflow-y: auto;
+  position: relative;
+}
+
+.modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #fff;
+}
+
+.users-list {
+  margin-top: 1.5rem;
+}
+
+.user-card {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.user-card h4 {
+  margin: 0 0 0.5rem 0;
+  color: var(--color-main);
+}
+
+.user-card p {
+  margin: 0;
+  opacity: 0.8;
+}
+
+/* Language switcher styles */
+.lang-switcher {
+  position: relative;
+}
+
+.lang-btn {
+  display: flex;
+  align-items: center;
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.lang-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: var(--bg-color);
+  border: 1px solid var(--color-main);
+  border-radius: 4px;
+  margin-top: 0.5rem;
+  z-index: 100;
+}
+
+.lang-item {
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  white-space: nowrap;
+  color: #fff;
+}
+
+.lang-item:hover {
+  background: var(--color-second);
+}
+
+.arrow-icon {
+  transition: transform 0.3s ease;
+  transform: rotate(0deg);
+}
+
+.lang-btn.open .arrow-icon {
+  transform: rotate(180deg);
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .burger-menu {
+    display: flex;
+  }
+
+  .nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 70%;
+    max-width: 300px;
+    background: var(--bg-color);
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 80px 2rem 2rem;
+    gap: 1.5rem;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+  }
+
+  .nav.open {
+    transform: translateX(0);
+  }
+
+  .contact-btn {
+    display: none;
+  }
+
+  .lang-switcher {
+    margin-top: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo img {
+    max-width: 100px;
+  }
+  
+  .modal {
+    padding: 1.5rem;
+  }
+}

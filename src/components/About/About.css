@@ -1,0 +1,54 @@
+.about-section {
+  margin-bottom: 128px;
+}
+
+
+.about-section .container {
+  display: flex;
+  flex-direction: column;
+}
+
+.about-container {
+  display: flex;
+  flex-direction: row;
+  margin: 0 auto;
+  gap: 12px;
+}
+
+.about-item {
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+  flex: 1 1 200px;
+}
+
+.about-icon {
+  background-color: var(--color-second);
+  border-radius: 35%;
+  color: white;
+  padding: 14px;
+  width: 64px;
+  height: 64px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0; /* НЕ сжимать */
+}
+
+.about-text h4 {
+  font-size: 24px;
+  font-weight: 300;
+}
+
+.about-text p {
+  font-size: 16px;
+  color: #adb2b1;
+}
+
+.about-text {
+  display: flex;
+  flex-direction: column;
+  max-width: 80%;
+  gap: 8px;
+}
