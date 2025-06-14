@@ -1,7 +1,7 @@
 .features-section {
   color: white;
   font-family: sans-serif;
-  margin-top: 128px;
+  margin-top: 100px;
   width: 100%;
 }
 
@@ -19,18 +19,20 @@
 }
 
 .features-inner {
-  max-width: 1200px;
   width: 90%;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
   margin: 0 auto;
+  gap: 10px;
 }
 
 .feature {
   flex: 1 1 200px;
   text-align: center;
   max-width: 270px;
+  min-width: 150px;
+  padding: 15px;
 }
 
 .feature-title {
@@ -43,4 +45,81 @@
   color: var(--color-main);
   font-size: 1rem;
   line-height: 1.4;
+}
+
+.feature-desc--last p {
+  color: var(--color-main);
+  width: 120%;
+}
+
+@media (max-width: 1260px) {
+  .features-inner {
+    flex-wrap: wrap;
+  }
+}
+
+/* Медиа-запросы для адаптивности */
+@media (max-width: 1024px) {
+  .features-section {
+    margin-top: 80px;
+  }
+
+  .features-container {
+    padding: 30px 15px;
+    gap: 20px;
+  }
+
+  .feature-title {
+    font-size: 36px;
+  }
+
+  .feature-desc {
+    display: flex;
+    justify-content: center;
+  }
+
+.feature-desc--last p {
+  width: 100%;
+
+}
+
+  .feature-desc p {
+    max-width: 90%;
+  }
+}
+
+@media (max-width: 768px) {
+  .features-section {
+    margin-top: 60px;
+  }
+
+  .features-container {
+    padding: 20px 10px;
+    gap: 20px;
+  }
+
+  .features-inner {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .feature {
+    max-width: 100%;
+    flex: 1 1 auto;
+  }
+
+  .feature-title {
+    font-size: 32px;
+  }
+}
+
+@media (max-width: 480px) {
+  .feature-title {
+    font-size: 28px;
+  }
+
+  .feature-desc {
+    font-size: 0.9rem;
+  }
 }

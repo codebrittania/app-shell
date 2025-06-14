@@ -11,50 +11,48 @@
   --color-second: #3d544d;
   --color-second-rgb: 61, 84, 77;
   --bg-color: #1a1e1c;
-  
 }
 
 body {
   background-color: var(--bg-color);
   font-weight: 500;
   color: #fff;
-  position: relative; 
+  position: relative;
+  overflow-x: hidden;
+  z-index: 0;
 }
 
-/* body::before {
-  content: "";
-  position: absolute;
-  top: -100px;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url("/line.svg");
-  background-repeat: no-repeat;
-  background-position: center top;
-  background-size:  auto;
-  opacity: 0.6;
-  pointer-events: none;
-  z-index: 0;
-} */
+
+
 
 .container {
-  max-width: 1440px; 
+  max-width: 1440px;
   margin: 2rem auto 0; /* сверху 32px, по бокам auto для центрирования */
-  padding: 0 100px;    /* боковые отступы */
+  padding: 0 100px; /* боковые отступы */
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
+@media (max-width: 768px) {
+  .container {
+    padding: 0 50px; /* боковые отступы */
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 20px; /* боковые отступы */
+  }
+}
 .container--footer {
-  max-width: 1440px; 
+  max-width: 1440px;
   margin: 2rem auto 0; /* сверху 32px, по бокам auto для центрирования */
-  padding: 0 100px;    /* боковые отступы */
+  padding: 0 100px; /* боковые отступы */
   display: column;
   justify-content: space-between;
   align-items: center;
 }
-
 * button {
   font-family: "M PLUS 1", sans-serif;
 }

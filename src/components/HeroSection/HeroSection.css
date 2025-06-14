@@ -1,8 +1,9 @@
 /* Основные стили секции */
 section {
-  margin-top: 128px;
-
+  margin-top: 80px;
   padding: 0 0;
+  position: relative;
+  z-index: 100001;
 }
 
 /* Стили hero блока */
@@ -10,28 +11,32 @@ section {
   display: flex;
   flex-direction: row;
   gap: 2rem;
+  align-items: center;
+  position: relative;
+  z-index: 100000;
 }
 
 .hero_info {
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  position: re;
+  position: relative;
 }
 
 .hero_text {
-  font-size: 56px;
+  font-size: clamp(2rem, 5vw, 3.5rem);
   font-weight: 700;
-  line-height: 64px;
+  line-height: 1.2;
   max-width: 600px;
 }
 
 .hero_description {
-  font-size: 1rem;
+  font-size: clamp(0.875rem, 2vw, 1rem);
   font-weight: 400;
   color: #adb2b1;
   max-width: 500px;
   line-height: 1.6;
+  margin-bottom: 1rem;
 }
 
 .hero_button {
@@ -86,7 +91,11 @@ section {
 
 /* Стили изображения */
 .hero_image {
-  width: 600px;
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  margin-left: auto;
+  z-index: 100001;
 }
 
 .hero_image img {
@@ -95,12 +104,53 @@ section {
   position: relative;
   z-index: 1001;
 }
+@media (max-width: 1280px) {
+  .hero_image {
+    max-width: 100%;
+    padding: 0 2rem;
+  }
+}
 
 /* Адаптивные стили */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .hero {
-    text-align: center;
-    align-items: center;
+    flex-direction: row;
+    gap: 2rem;
+  }
+
+  .hero_info {
+  }
+
+  .hero_text,
+  .hero_description {
+    max-width: 100%;
+  }
+
+  .hero_image {
+    display: none;
+    max-width: 100%;
+    padding: 0 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  section {
+    margin-top: 60px;
+  }
+
+  .hero_text {
+    font-size: 2.5rem;
+  }
+
+  .hero_image {
+    max-width: 100%;
+    padding: 0 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 0rem;
   }
 
   .hero_text {
@@ -108,14 +158,21 @@ section {
   }
 
   .hero_image {
-    position: static;
-    transform: none;
-    margin-top: 2rem;
-    width: 100%;
-    max-width: 300px;
+    padding: 0;
+    display: none;
   }
 
   .clients {
-    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .clients p {
+    max-width: 60%;
+  }
+}
+
+@media (max-width: 390px) {
+  .clients p {
+    max-width: 100%;
   }
 }

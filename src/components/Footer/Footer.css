@@ -2,7 +2,6 @@
   width: 100%;
   padding: 2rem 0;
   background-color: rgb(var(--color-second-rgb), 0.24);
-
   backdrop-filter: blur(20px); /* размытие заднего фона */
   -webkit-backdrop-filter: blur(20px); /* поддержка Safari */
   border-top: 1px solid rgba(255, 255, 255, 0.1); /* тонкая граница */
@@ -24,6 +23,7 @@
 .footer-logo p {
   color: #adb2b1;
   font-weight: 400;
+  max-width: 300px;
 }
 
 /* Нижняя часть футера */
@@ -37,4 +37,31 @@
 
 .footer-cookies a {
   color: #adb2b1;
+}
+
+@media (max-width: 768px) {
+  .footer {
+    width: 100%;
+    padding: 2rem 0rem 2rem 0rem;
+    background-color: rgb(var(--color-second-rgb), 0.24);
+    backdrop-filter: blur(20px); /* размытие заднего фона */
+    -webkit-backdrop-filter: blur(20px); /* поддержка Safari */
+    border-top: 1px solid rgba(255, 255, 255, 0.1); /* тонкая граница */
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+  }
+
+  .footer-top {
+  display: flex;
+  margin-bottom: 4rem;
+}
+
+  .footer-bottom {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: #adb2b1;
+    font-weight: 400;
+    font-size: 12px;
+    gap: 1rem;
+  }
 }

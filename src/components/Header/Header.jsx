@@ -1,83 +1,59 @@
-import React, { useEffect, useRef, useState } from "react";
-import { MdArrowDropDown } from "react-icons/md";
+import React, { useState, useRef } from "react";
+import { FaBars, FaTimes, FaChevronDown } from "react-icons/fa";
 import "./Header.css";
 
-const languages = [
-  { code: "ru", label: "RU" },
-  { code: "en", label: "EN" },
-];
-
 const Header = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [lang, setLang] = useState(languages[0]);
-  const ref = useRef();
-  const [usersData, setUsersData] = useState([]);
-  const [filteredUsersById, setFilteredUsersById] = useState([]);
-  const [query, setQuery] = useState("");
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isLangOpen, setIsLangOpen] = useState(false);
+  const langRef = useRef();
 
-  useEffect(() => {
-    const handleClick = (e) =>
-      ref.current && !ref.current.contains(e.target) && setIsOpen(false);
-    window.addEventListener("click", handleClick);
-    return () => window.removeEventListener("click", handleClick);
-  }, []);
+  const languages = [
+    { code: 'ru', label: 'RU' },
+    { code: 'en', label: 'EN' }
+  ];
+  const [currentLang, setCurrentLang] = useState(languages[0]);
 
-  useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/users")
-      .then((response) => response.json())
-      .then((json) => setUsersData(json));
-  }, []);
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
 
-  useEffect(() => {
-    if (query.trim() === "") {
-      setFilteredUsersById(usersData);
-    } else {
-      const id = parseInt(query);
-      if (!isNaN(id)) {
-        const filtered = usersData.filter((user) => user.id === id);
-        setFilteredUsersById(filtered);
-      } else {
-        setFilteredUsersById([]);
-      }
-    }
-  }, [query, usersData]);
+  const toggleLangMenu = () => setIsLangOpen(!isLangOpen);
 
-  const selectLang = (l) => {
-    setLang(l);
-    setIsOpen(false);
+  const handleLangSelect = (lang) => {
+    setCurrentLang(lang);
+    setIsLangOpen(false);
   };
   return (
-    <header className="">
-      <div className="container header">
+    <header className="header">
+      <div className="container header-container">
         <div className="logo">
           <a href="/">
-            <img src="/logo.svg" alt="Cryptura logo" width="120" />
+            <img src="/logo.svg" alt="Logo" width="120" />
           </a>
         </div>
 
-        <nav className="nav">
+        <button className="menu-toggle" onClick={toggleMenu}>
+          {isMenuOpen ? <FaTimes /> : <FaBars />}
+        </button>
+
+        <nav className={`nav ${isMenuOpen ? "open" : ""}`}>
           <a href="#about">Почему мы</a>
           <a href="#">Наши сервисы</a>
           <a href="#portfolio">Платежные решения</a>
-          <div className="lang-switcher" ref={ref}>
-            <button
-              className={`lang-btn ${isOpen ? "open" : ""}`}
-              onClick={() => setIsOpen((o) => !o)}
-            >
-              <span className="flag">{lang.flag}</span> {lang.label}
-              <MdArrowDropDown className="arrow-icon" />
+          <div className="lang-switcher" ref={langRef}>
+            <button className="lang-btn" onClick={toggleLangMenu}>
+              {currentLang.label}
+              <FaChevronDown className="lang-arrow" />
             </button>
-
-            {isOpen && (
-              <div className="lang-menu">
-                {languages.map((l) => (
+            {isLangOpen && (
+              <div className="lang-dropdown">
+                {languages.map(lang => (
                   <div
-                    key={l.code}
-                    className="lang-item"
-                    onClick={() => selectLang(l)}
+                    key={lang.code}
+                    className={`lang-option ${currentLang.code === lang.code ? 'active' : ''}`}
+                    onClick={() => handleLangSelect(lang)}
                   >
-                    <span className="flag"></span> {l.label}
+                    {lang.label}
                   </div>
                 ))}
               </div>
@@ -85,38 +61,8 @@ const Header = () => {
           </div>
         </nav>
 
-        <button className="contact-btn" onClick={() => setIsModalOpen(true)}>
-          Связаться с нами
-        </button>
+        <button className="contact-btn">Связаться с нами</button>
       </div>
-
-      {isModalOpen && (
-        <div className="modal-overlay">
-          <div className="modal">
-            <button
-              className="modal-close"
-              onClick={() => setIsModalOpen(false)}
-            >
-              &times;
-            </button>
-            <h3>Наши контакты</h3>
-            <div className="users-list">
-              <input
-                type="text"
-                placeholder="Поиск по ID"
-                value={query}
-                onChange={(e) => setQuery(e.target.value)}
-                className="styled-input"
-              />
-              {filteredUsersById.map((user) => (
-                <div key={user.id} className="user-card">
-                  <h4>{user.name}</h4>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      )}
     </header>
   );
 };
