@@ -14,7 +14,7 @@ const HeroSection = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: .9 }}
             >
-              <h1 className="hero_text">Добро пожаловать в Cryptura</h1>
+              <h1 className="hero_text">Добро пожаловать в <span> Cryptura</span></h1>
             </motion.div>
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -55,9 +55,9 @@ const HeroSection = () => {
           </div>
           <div className="hero_image">
             <motion.img
-              src="/credit-card2.svg"
+              src="/credit-card.png"
               alt="card"
-              initial={{ opacity: 0, y: -50 }}
+              initial={{ opacity: 1, y: -50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: .9 }}
             />

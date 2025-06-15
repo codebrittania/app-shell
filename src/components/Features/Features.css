@@ -1,8 +1,39 @@
 .features-section {
   color: white;
   font-family: sans-serif;
-  margin-top: 100px;
+  margin-top: 180px;
   width: 100%;
+  position: relative;
+}
+
+.features-section::after {
+  content: "";
+  position: absolute;
+  top: -46px;
+  left: 780px;
+  right: 0;
+  bottom: 0;
+  background-image: url("/dora3.svg");
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: auto;
+  z-index: -10;
+  pointer-events: none;
+}
+
+.features-section::before {
+  content: "";
+  position: absolute;
+  top: -22px;
+  left: -1000px;
+  right: 0;
+  bottom: 0;
+  background-image: url("/dora4.svg");
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: auto;
+  z-index: -10;
+  pointer-events: none;
 }
 
 .features-container {
@@ -13,7 +44,7 @@
   justify-content: center;
   padding: 40px 20px;
   gap: 30px;
-  backdrop-filter: blur(12px);
+  backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(12px); /* для Safari */
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2); /* мягкая тень */
 }
@@ -56,6 +87,28 @@
   .features-inner {
     flex-wrap: wrap;
   }
+  .features-section::before {
+    top: -22px;
+    left: -600px;
+  }
+  .features-section::after {
+    top: -102px;
+    left: 600px;
+  }
+}
+
+@media (max-width: 1260px) {
+  .features-inner {
+    flex-wrap: wrap;
+  }
+  .features-section::before {
+    top: -22px;
+    left: -400px;
+  }
+  .features-section::after {
+    top: -102px;
+    left: 400px;
+  }
 }
 
 /* Медиа-запросы для адаптивности */
@@ -78,10 +131,9 @@
     justify-content: center;
   }
 
-.feature-desc--last p {
-  width: 100%;
-
-}
+  .feature-desc--last p {
+    width: 100%;
+  }
 
   .feature-desc p {
     max-width: 90%;
@@ -91,6 +143,10 @@
 @media (max-width: 768px) {
   .features-section {
     margin-top: 60px;
+  }
+  .features-section::before {
+    top: -22px;
+    left: -300px;
   }
 
   .features-container {
@@ -117,6 +173,16 @@
 @media (max-width: 480px) {
   .feature-title {
     font-size: 28px;
+  }
+
+   .features-section::after {
+    top: -240px;
+    left: 260px;
+  }
+
+  .features-section::before {
+    top: -12px;
+    left: -200px;
   }
 
   .feature-desc {

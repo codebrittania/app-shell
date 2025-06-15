@@ -1,9 +1,39 @@
 /* Основные стили секции */
 section {
-  margin-top: 80px;
+  margin-top: 96px;
   padding: 0 0;
   position: relative;
-  z-index: 100001;
+  z-index: 10;
+}
+
+section .container .hero::after {
+  content: "";
+  position: absolute;
+  top: -60px;
+  left: 660px;
+  right: 0;
+  bottom: 0;
+  background-image: url("/star.svg");
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: auto;
+  z-index: -2;
+  pointer-events: none;
+}
+
+.hero_info::after {
+  content: "";
+  position: absolute;
+  top: 326px;
+  left: 110px;
+  right: 0;
+  bottom: 0;
+  background-image: url("/dora.svg");
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: auto;
+  z-index: -10;
+  pointer-events: none;
 }
 
 /* Стили hero блока */
@@ -13,7 +43,7 @@ section {
   gap: 2rem;
   align-items: center;
   position: relative;
-  z-index: 100000;
+  z-index: 20;
 }
 
 .hero_info {
@@ -40,6 +70,7 @@ section {
 }
 
 .hero_button {
+  position: relative;
   background-color: var(--color-main);
   color: #ffffff;
   text-decoration: none;
@@ -91,23 +122,46 @@ section {
 
 /* Стили изображения */
 .hero_image {
-  position: relative;
   width: 100%;
   max-width: 600px;
   margin-left: auto;
-  z-index: 100001;
+}
+
+.hero_text span {
+  background: linear-gradient(87.83deg, #fff 70.26%, #999999 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .hero_image img {
   width: 100%;
   height: auto;
   position: relative;
-  z-index: 1001;
+  z-index: 100 !important;
+}
+@media (max-width: 1400px) {
+  .hero_image {
+    max-width: 100%;
+    padding: 0 2rem;
+  }
+
+  .hero_info::after {
+    top: 426px;
+    left: 240px;
+    right: 0;
+    bottom: 0;
+  }
 }
 @media (max-width: 1280px) {
   .hero_image {
     max-width: 100%;
     padding: 0 2rem;
+  }
+  .hero_info::after {
+    top: 446px;
+    left: 280px;
+    right: 0;
+    bottom: 0;
   }
 }
 
@@ -117,8 +171,18 @@ section {
     flex-direction: row;
     gap: 2rem;
   }
+  .hero_info::after {
+    top: 446px;
+    left: 420px;
+    right: 0;
+    bottom: 0;
+  }
 
-  .hero_info {
+  section .container .hero::after {
+    top: -70px;
+    left: 460px;
+    right: 0;
+    bottom: 0;
   }
 
   .hero_text,
@@ -138,6 +202,13 @@ section {
     margin-top: 60px;
   }
 
+  section .container .hero::after {
+    top: 60px;
+    left: 200px;
+    right: 0;
+    bottom: 0;
+  }
+
   .hero_text {
     font-size: 2.5rem;
   }
@@ -151,6 +222,13 @@ section {
 @media (max-width: 480px) {
   .container {
     padding: 0 0rem;
+  }
+
+  section .container .hero::after {
+    top: 50px;
+    left: 100px;
+    right: 0;
+    bottom: 0;
   }
 
   .hero_text {

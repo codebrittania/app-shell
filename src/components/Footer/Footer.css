@@ -1,4 +1,5 @@
 .footer {
+  position: relative;
   width: 100%;
   padding: 2rem 0;
   background-color: rgb(var(--color-second-rgb), 0.24);
@@ -6,6 +7,22 @@
   -webkit-backdrop-filter: blur(20px); /* поддержка Safari */
   border-top: 1px solid rgba(255, 255, 255, 0.1); /* тонкая граница */
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+}
+
+.footer::before {
+  content: "";
+  position: absolute;
+  top: -64px;
+  left: -1120px;
+  right: 0;
+  bottom: 0;
+  background-image: url("/dora9.svg");
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: auto;
+  z-index: -1000;
+  pointer-events: none;
 }
 
 /* Верхняя часть (лого и текст) */
@@ -39,6 +56,23 @@
   color: #adb2b1;
 }
 
+@media (max-width: 1440px) {
+  .footer::before {
+    content: "";
+    position: absolute;
+    top: -64px;
+    left: -600px;
+    right: 0;
+    bottom: 0;
+    background-image: url("/dora9.svg");
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: auto;
+    z-index: -1000;
+    pointer-events: none;
+  }
+}
+
 @media (max-width: 768px) {
   .footer {
     width: 100%;
@@ -50,10 +84,25 @@
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
   }
 
+  .footer::before {
+    content: "";
+    position: absolute;
+    top: -64px;
+    left: -420px;
+    right: 0;
+    bottom: 0;
+    background-image: url("/dora9.svg");
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: auto;
+    z-index: -1000;
+    pointer-events: none;
+  }
+
   .footer-top {
-  display: flex;
-  margin-bottom: 4rem;
-}
+    display: flex;
+    margin-bottom: 4rem;
+  }
 
   .footer-bottom {
     display: flex;
@@ -64,4 +113,22 @@
     font-size: 12px;
     gap: 1rem;
   }
+}
+
+@media (max-width: 480px) {
+   .footer::before {
+    content: "";
+    position: absolute;
+    top: -64px;
+    left: -120px;
+    right: 0;
+    bottom: 0;
+    background-image: url("/dora9.svg");
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: auto;
+    z-index: -1000;
+    pointer-events: none;
+  }
+
 }

@@ -1,16 +1,9 @@
-import { motion } from "framer-motion";
 import React from "react";
 import "./Features.css";
 
 const Features = () => {
   return (
-    <motion.section
-      className="features-section"
-      initial={{ opacity: 0, y: 2 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: .6 }}
-      transition={{ duration: 0.8 }}
-    >
+    <section className="features-section ">
       <div className="container">
         <div className="features-container">
           <div className="features-inner">
@@ -27,13 +20,17 @@ const Features = () => {
             <div className="feature">
               <div className="feature-title">100+</div>
               <div className="feature-desc">
-                <p>Партнёров по всему рынку</p>
+                <p>
+                  Партнёров по всему <br /> рынку
+                </p>
               </div>
             </div>
             <div className="feature">
               <div className="feature-title">2+</div>
               <div className="feature-desc">
-                <p>Года опыта на рынке</p>
+                <p>
+                  Года опыта на <br /> рынке
+                </p>
               </div>
             </div>
             <div className="feature">
@@ -49,7 +46,7 @@ const Features = () => {
           </div>
         </div>
       </div>
-    </motion.section>
+    </section>
   );
 };
 

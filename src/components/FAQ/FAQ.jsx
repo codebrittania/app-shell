@@ -48,7 +48,7 @@ const FAQ = () => {
   ];
 
   return (
-    <div className="">
+    <div className="faq-div">
       <h3 className="section-title">FAQs</h3>
       <div className="faq-container ">
         {faqItems.map((item, index) => (

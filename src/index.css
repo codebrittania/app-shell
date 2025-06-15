@@ -1,5 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=M+PLUS+1:wght@100..900&display=swap");
 
+html {
+  overflow-x: hidden;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -8,6 +12,7 @@
 }
 :root {
   --color-main: #2bb32a;
+  --color-main-rgb: 43, 179, 42;
   --color-second: #3d544d;
   --color-second-rgb: 61, 84, 77;
   --bg-color: #1a1e1c;
@@ -15,16 +20,41 @@
 
 body {
   background-color: var(--bg-color);
-  font-weight: 500;
-  color: #fff;
   position: relative;
   overflow-x: hidden;
-  z-index: 0;
+  color: #ffffff;
 }
 
+body::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 40px;
+  bottom: 0;
+  background-image: url("/line.svg");
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: auto;
+  z-index: 0;
+  pointer-events: none;
+  overflow-x: hidden;
+}
 
-
-
+body::before {
+  content: "";
+  position: absolute;
+  width: 1060px;
+  height: 1060px;
+  background-color: var(--color-main);
+  border-radius: 50%;
+  filter: blur(300px);
+  opacity: 0.2;
+  top: -400px;
+  left: 520px;
+  z-index: -1;
+  pointer-events: none;
+}
 .container {
   max-width: 1440px;
   margin: 2rem auto 0; /* сверху 32px, по бокам auto для центрирования */
@@ -34,9 +64,39 @@ body {
   align-items: center;
 }
 
+@media (max-width: 1400px) {
+  body::after {
+    right: 0;
+    background-size: cover;
+    background-position: center top;
+  }
+}
+
+@media (max-width: 1080px) {
+  body::before {
+    top: -500px;
+    left: 390px;
+  }
+
+  body::after {
+    right: 150px;
+    background-size: contain;
+    background-position: center top;
+  }
+}
+
 @media (max-width: 768px) {
   .container {
     padding: 0 50px; /* боковые отступы */
+  }
+
+  body::before {
+    top: -400px;
+    left: 290px;
+  }
+
+  body::after {
+    display: none;
   }
 }
 
@@ -63,4 +123,3 @@ body {
   color: #ffffff;
   font-size: 40px;
 }
-

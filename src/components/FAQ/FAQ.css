@@ -1,9 +1,78 @@
 .faq-container {
+  position: relative;
   max-width: 1020px;
   margin: 1rem auto;
   border-radius: 8px;
   overflow: hidden;
   margin-bottom: 128px;
+  z-index: 10;
+}
+
+.faq-container::after {
+  content: "";
+  position: absolute;
+  top: 150px;
+  left: -420px;
+  right: 0;
+  bottom: 0;
+  background-image: url("/dora7.svg");
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: auto;
+  z-index: -10;
+  pointer-events: none;
+}
+.faq-container::before {
+  content: "";
+  position: absolute;
+  top: 174px;
+  left: 520px;
+  right: 0;
+  bottom: 0;
+  background-image: url("/dora8.svg");
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: auto;
+  z-index: -10;
+  pointer-events: none;
+}
+
+.faq-div::after {
+  content: "";
+  position: absolute;
+  top: 180px;
+  left: 1350px;
+  right: 0;
+  bottom: 0;
+  background-image: url("/dora6.svg");
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: auto;
+  z-index: -10;
+  pointer-events: none;
+}
+
+.faq-div {
+  position: relative;
+}
+
+.faq-div::before {
+  content: "";
+  position: absolute;
+  width: 1060px;
+  height: 1060px;
+  background-color: var(--color-main);
+  border-radius: 50%;
+  filter: blur(300px);
+  opacity: 0.3;
+  top: -300px;
+  right: -550px;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.section_title {
+  position: relative;
 }
 
 .faq-item {
@@ -44,12 +113,74 @@
   max-height: 200px;
 }
 
-@media (max-width: 768px) {
+.faq-answer p {
+  margin: 0;
+  color: #adb2b1;
+  font-size: 0.95rem;
+}
+
+@media (max-width: 1440px) {
+  .faq-container::after {
+    content: "";
+    position: absolute;
+    top: 150px;
+    left: -320px;
+    right: 0;
+    bottom: 0;
+    background-image: url("/dora7.svg");
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: auto;
+    z-index: -10;
+    pointer-events: none;
+  }
+  .faq-container::before {
+    content: "";
+    position: absolute;
+    top: 174px;
+    left: 320px;
+    right: 0;
+    bottom: 0;
+    background-image: url("/dora8.svg");
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: auto;
+    z-index: -10;
+    pointer-events: none;
+  }
+
+  .faq-div::after {
+    content: "";
+    position: absolute;
+    top: -40px;
+    left: 750px;
+    right: 0;
+    bottom: 0;
+    background-image: url("/dora6.svg");
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: auto;
+    z-index: -10;
+    pointer-events: none;
+  }
+}
+
+@media (max-width: 1280px) {
+  .faq-container {
+    padding: 0 2rem;
+  }
+
+  .faq-answer .open {
+    padding: 20rem;
+  }
+}
+
+@media (max-width: 800px) {
   .faq-question {
     padding: 1.2rem 0;
     font-size: 1.2rem;
   }
-  
+
   .faq-answer.open {
     padding: 1.2rem 0;
     max-height: 500px;
@@ -59,20 +190,94 @@
     font-size: 1rem;
     line-height: 1.5;
   }
-}
 
-.faq-answer p {
-  margin: 0;
-  color: #adb2b1;
-  font-size: 0.95rem;
-}
-
-@media (max-width: 1280px) {
-  .faq-container {
-    padding: 0 2rem;
+  .faq-container::after {
+    content: "";
+    position: absolute;
+    top: 150px;
+    left: -280px;
+    right: 0;
+    bottom: 0;
+    background-image: url("/dora7.svg");
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: auto;
+    z-index: -10;
+    pointer-events: none;
   }
-  
-  .faq-answer .open {
-    padding: 20rem;
+  .faq-container::before {
+    content: "";
+    position: absolute;
+    top: 174px;
+    left: 220px;
+    right: 0;
+    bottom: 0;
+    background-image: url("/dora8.svg");
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: auto;
+    z-index: -10;
+    pointer-events: none;
+  }
+
+  .faq-div::after {
+    content: "";
+    position: absolute;
+    top: -40px;
+    left: 450px;
+    right: 0;
+    bottom: 0;
+    background-image: url("/dora6.svg");
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: auto;
+    z-index: -10;
+    pointer-events: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .faq-container::after {
+    content: "";
+    position: absolute;
+    top: 150px;
+    left: -220px;
+    right: 0;
+    bottom: 0;
+    background-image: url("/dora7.svg");
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: auto;
+    z-index: -10;
+    pointer-events: none;
+  }
+  .faq-container::before {
+    content: "";
+    position: absolute;
+    top: 172px;
+    left: 240px;
+    right: 0;
+    bottom: 0;
+    background-image: url("/dora8.svg");
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: auto;
+    z-index: -10;
+    pointer-events: none;
+  }
+
+  .faq-div::after {
+    content: "";
+    position: absolute;
+    top: -40px;
+    left: 270px;
+    right: 0;
+    bottom: 0;
+    background-image: url("/dora6.svg");
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: auto;
+    z-index: -10;
+    pointer-events: none;
   }
 }
