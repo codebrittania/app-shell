@@ -10,12 +10,11 @@ const languages = [
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLangOpen, setIsLangOpen] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     const originalStyle = window.getComputedStyle(document.body).overflow;
     
-    if (isModalOpen || isMenuOpen) {
+    if (isMenuOpen) {
       document.body.style.overflow = 'hidden';
       document.documentElement.style.overflow = 'hidden';
     }
@@ -24,7 +23,7 @@ const Header = () => {
       document.body.style.overflow = originalStyle;
       document.documentElement.style.overflow = originalStyle;
     };
-  }, [isModalOpen, isMenuOpen]);
+  }, [ isMenuOpen]);
   const [usersData, setUsersData] = useState([]);
   const [filteredUsersById, setFilteredUsersById] = useState([]);
   const [query, setQuery] = useState("");
@@ -32,32 +31,8 @@ const Header = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 3;
 
-  useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/users")
-      .then((response) => response.json())
-      .then((json) => setUsersData(json));
-  }, []);
 
-  useEffect(() => {
-    setCurrentPage(1); 
-    if (query.trim() === "") {
-      setFilteredUsersById(usersData);
-    } else {
-      const id = parseInt(query);
-      if (!isNaN(id)) {
-        const filtered = usersData.filter((user) => user.id === id);
-        setFilteredUsersById(filtered);
-      } else {
-        setFilteredUsersById([]);
-      }
-    }
-  }, [query, usersData]);
 
-  const totalPages = Math.ceil(filteredUsersById.length / itemsPerPage);
-  const paginatedUsers = filteredUsersById.slice(
-    (currentPage - 1) * itemsPerPage,
-    currentPage * itemsPerPage
-  );
 
   const langRef = useRef();
 
@@ -72,8 +47,6 @@ const Header = () => {
     setIsLangOpen(false);
   };
 
-  const openModal = () => setIsModalOpen(true);
-  const closeModal = () => setIsModalOpen(false);
 
   return (
     <header className="header">
@@ -120,75 +93,15 @@ const Header = () => {
             )}
           </div>
 
-          <button className="contact-btn mobile-only" onClick={() => {openModal(), setIsMenuOpen(false);}}>
+          <button className="contact-btn mobile-only" onClick={() => window.open("https://t.me/coo_cryptura", "_blank")}>
             Связаться с нами
           </button>
         </nav>
 
-        <button className="contact-btn desktop-only" onClick={openModal}>
+        <button className="contact-btn desktop-only" onClick={() => window.open("https://t.me/coo_cryptura", "_blank")}>
           Связаться с нами
         </button>
 
-        {isModalOpen && (
-          <div className="modal-overlay" onClick={closeModal}>
-            <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-              <button className="modal-close" onClick={closeModal}>
-                ×
-              </button>
-              <h2>Поиск пользователя по ID</h2>
-
-              <input
-                type="text"
-                placeholder="Введите ID пользователя"
-                value={query}
-                onChange={(e) => setQuery(e.target.value)}
-                className="modal-input"
-              />
-
-              <div className="modal-body">
-                {paginatedUsers.length > 0 ? (
-                  paginatedUsers.map((user) => (
-                    <div key={user.id} className="user-card">
-                      <p>
-                        <strong>ID:</strong> {user.id}
-                      </p>
-                      <p>
-                        <strong>Имя:</strong> {user.name}
-                      </p>
-                      <p>
-                        <strong>Email:</strong> {user.email}
-                      </p>
-                    </div>
-                  ))
-                ) : (
-                  <p>Пользователь не найден</p>
-                )}
-              </div>
-
-              {totalPages > 1 && (
-                <div className="pagination">
-                  <button
-                    onClick={() => setCurrentPage((p) => Math.max(p - 1, 1))}
-                    disabled={currentPage === 1}
-                  >
-                    ⟨ Назад
-                  </button>
-                  <span>
-                    {currentPage} / {totalPages}
-                  </span>
-                  <button
-                    onClick={() =>
-                      setCurrentPage((p) => Math.min(p + 1, totalPages))
-                    }
-                    disabled={currentPage === totalPages}
-                  >
-                    Вперед ⟩
-                  </button>
-                </div>
-              )}
-            </div>
-          </div>
-        )}
       </div>
     </header>
   );
