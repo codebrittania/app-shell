@@ -23,12 +23,25 @@
 }
 
 .menu-toggle {
+  position: relative;
   background: none;
   border: none;
   font-size: 1.5rem;
   cursor: pointer;
   color: #fff;
   display: none;
+}
+
+/* Псевдоэлемент крестика */
+.menu-toggle.open::after {
+  content: "";
+  position: absolute;
+  top: 0px;
+  right: -8px;
+  width: 16px;
+  height: 16px;
+  background: transparent;
+  pointer-events: none;
 }
 
 .nav {
@@ -38,7 +51,7 @@
 }
 
 .nav a {
-  position: relative; 
+  position: relative;
   color: #fff;
   text-decoration: none;
   font-weight: 500;
@@ -169,6 +182,33 @@
   padding: 1rem;
   margin-bottom: 0.5rem;
   border-radius: 6px;
+}
+
+.menu-toggle.hidden {
+  display: none;
+}
+
+.mobile-close-btn {
+  display: none;
+}
+
+@media (max-width: 1080px) {
+  .mobile-close-btn {
+    display: block;
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 1000112;
+  }
+
+  .mobile-close-btn:hover {
+    color: var(--color-main);
+  }
 }
 
 .modal-overlay {

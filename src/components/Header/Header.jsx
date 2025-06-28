@@ -11,6 +11,20 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLangOpen, setIsLangOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  useEffect(() => {
+    const originalStyle = window.getComputedStyle(document.body).overflow;
+    
+    if (isModalOpen || isMenuOpen) {
+      document.body.style.overflow = 'hidden';
+      document.documentElement.style.overflow = 'hidden';
+    }
+
+    return () => {
+      document.body.style.overflow = originalStyle;
+      document.documentElement.style.overflow = originalStyle;
+    };
+  }, [isModalOpen, isMenuOpen]);
   const [usersData, setUsersData] = useState([]);
   const [filteredUsersById, setFilteredUsersById] = useState([]);
   const [query, setQuery] = useState("");
@@ -25,7 +39,7 @@ const Header = () => {
   }, []);
 
   useEffect(() => {
-    setCurrentPage(1); // <--- это
+    setCurrentPage(1); 
     if (query.trim() === "") {
       setFilteredUsersById(usersData);
     } else {
@@ -70,11 +84,14 @@ const Header = () => {
           </a>
         </div>
 
-        <button className="menu-toggle" onClick={toggleMenu}>
-          {isMenuOpen ? <FaTimes /> : <FaBars />}
+        <button className={`menu-toggle ${isMenuOpen ? 'hidden' : ''}`} onClick={toggleMenu}>
+          <FaBars />
         </button>
 
         <nav className={`nav ${isMenuOpen ? "open" : ""}`}>
+          <button className="mobile-close-btn" onClick={toggleMenu}>
+            <FaTimes />
+          </button>
           <a href="#about">Почему мы</a>
           <a href="#">Наши сервисы</a>
           <a href="#portfolio">Платежные решения</a>
