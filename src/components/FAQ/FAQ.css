@@ -106,11 +106,17 @@
   overflow: hidden;
   transition: max-height 0.3s ease, padding 0.3s ease;
   padding: 0 1rem;
+  
 }
 
 .faq-answer.open {
-  padding: 1rem 0rem;
+  margin-bottom: 1rem;
+  padding: 1rem 1rem;
   max-height: 200px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.01), rgba(255, 255, 255, 0.01));
+  border-radius: 6px;
+  backdrop-filter: blur(6px);
+  transition: all 0.3s ease;
 }
 
 .faq-answer p {
@@ -182,7 +188,7 @@
   }
 
   .faq-answer.open {
-    padding: 1.2rem 0;
+    padding: 1.2rem 1rem;
     max-height: 500px;
   }
 

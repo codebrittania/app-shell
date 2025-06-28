@@ -43,8 +43,8 @@ const HeroSection = () => {
               transition={{ duration: 1.3 }}
             >
               <div className="clients">
-                <div class="avatars">
-                  <img src="/people.png" alt="users" class="avatar" />
+                <div className="avatars">
+                  <img src="/people.png" alt="users" className="avatar" />
                 </div>
                 <div className="clients_info">
                   <span>1000+</span>
